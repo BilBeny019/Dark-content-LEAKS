@@ -82,7 +82,7 @@ function resetState(chatId) {
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   resetState(chatId);
-  bot.sendMessage(chatId, '👋 Bem-vindo! Escolha um produto abaixo:', {
+  bot.sendMessage(chatId, '👋 Welcome to the dark store! Choose a product below.:', {
     reply_markup: { inline_keyboard: buildProductKeyboard() }
   });
 });
@@ -101,13 +101,13 @@ bot.on('callback_query', async (query) => {
     st.selected = key;
     st.step = 'awaiting_interest';
     await bot.sendMessage(chatId, `🎬 Preview: ${prod.videoUrl}`);
-    await bot.sendMessage(chatId, `💬 Deseja comprar *${prod.name}* por *${formatPrice(prod.price)}* ?`, {
+    await bot.sendMessage(chatId, `💬 Do you want to buy *${prod.name}* for *${formatPrice(prod.price)}* ?`, {
       parse_mode: 'Markdown',
       reply_markup: {
         inline_keyboard: [
           [
-            { text: '✅ Sim', callback_data: 'interested_yes' },
-            { text: '❌ Não', callback_data: 'interested_no' }
+            { text: '✅ Yes', callback_data: 'interested_yes' },
+            { text: '❌ No', callback_data: 'interested_no' }
           ]
         ]
       }
@@ -119,7 +119,7 @@ bot.on('callback_query', async (query) => {
   if (st.step === 'awaiting_interest') {
     if (data === 'interested_yes') {
       st.step = 'awaiting_method';
-      await bot.sendMessage(chatId, '💰 Escolha método de pagamento:', {
+      await bot.sendMessage(chatId, '💰 Choose payment method:', {
         reply_markup: {
           inline_keyboard: [
             [{ text: '💳 PayPal', callback_data: 'method_paypal' }],
@@ -131,7 +131,7 @@ bot.on('callback_query', async (query) => {
       });
     } else {
       resetState(chatId);
-      await bot.sendMessage(chatId, '👌 Tudo bem — escolha outro produto com /start.');
+      await bot.sendMessage(chatId, '👌Alright — choose another product with com /start.');
     }
     return bot.answerCallbackQuery(query.id);
   }
@@ -144,10 +144,10 @@ bot.on('callback_query', async (query) => {
     const prod = products[st.selected];
     let reply = `🧾 *Resumo do pedido*\n\n• Produto: *${prod.name}*\n• Preço: *${formatPrice(prod.price)}*\n• Método: *${method.toUpperCase()}*\n\n`;
 
-    if (method === 'paypal') reply += '💳 PayPal\nEnvie para: `merakiii@outlook.pt`\nDepois digite *confirm*';
-    if (method === 'binance') reply += '🪙 Binance\n• BTC: `bc1q...`\n• USDT: `0x8B2E...`\nDepois digite *confirm*';
-    if (method === 'cashapp') reply += '💼 CashApp\n👉 [Contacte o suporte](https://t.me/vendospay)\nDepois digite *confirm*';
-    if (method === 'giftcard') reply += '🎁 Gift Card\n👉 [Contacte o suporte](https://t.me/vendospay)\nDepois digite *confirm*';
+    if (method === 'paypal') reply += '💳 PayPal\👉 [Contacte o suporte](https://t.me/darksellerboss)\nThen type *confirm*';
+    if (method === 'binance') reply += '🪙 Binance\n• BTC: `12avvin2PmX8LcEQVyKr6gFCyVrt5bW9WR`\n• USDT: `0xb5cfe96ed1a089f6e46fd66fdbd2d31c4af4568d`\nThen type *confirm*';
+    if (method === 'cashapp') reply += '💼 CashApp\n👉 [Contacte o suporte](https://t.me/darksellerboss)\nThen type *confirm*';
+    if (method === 'giftcard') reply += '🎁 Gift Card\n👉 [Contacte o suporte](https://t.me/darksellerboss)\nThen type *confirm*';
 
     await bot.sendMessage(chatId, reply, { parse_mode: 'Markdown', disable_web_page_preview: false });
     return bot.answerCallbackQuery(query.id);
@@ -156,7 +156,7 @@ bot.on('callback_query', async (query) => {
   // carrinho
   if (data === 'carrinho') {
     const cart = st.cart || [];
-    if (cart.length === 0) await bot.sendMessage(chatId, '🛒 Seu carrinho está vazio.');
+    if (cart.length === 0) await bot.sendMessage(chatId, '🛒 Your cart is empty.');
     else await bot.sendMessage(chatId, '🛍️ Carrinho:\n- ' + cart.join('\n- '));
     return bot.answerCallbackQuery(query.id);
   }
@@ -174,7 +174,7 @@ bot.on('message', (msg) => {
 
   if (st.step === 'awaiting_confirmation' && text === 'confirm') {
     const prod = products[st.selected];
-    bot.sendMessage(chatId, `✅ Pagamento confirmado!\nVocê comprou *${prod.name}*.\nEnvie comprovante para 👉 https://t.me/vendospay`, { parse_mode: 'Markdown' });
+    bot.sendMessage(chatId, `✅ Payment confirmed!\nYou buy *${prod.name}*.\nSend proof for 👉 https://t.me/SELLERBOSS010`, { parse_mode: 'Markdown' });
     resetState(chatId);
   }
 });
@@ -182,4 +182,5 @@ bot.on('message', (msg) => {
 // express listen
 
 app.listen(PORT, () => console.log(`🌍 App escutando na porta ${PORT}`));
+
 
