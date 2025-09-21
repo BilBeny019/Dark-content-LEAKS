@@ -41,7 +41,10 @@ const products = {
   'lizzy_and_bro': { name: 'Lizzy And Bro', price: 25, videoUrl: 'https://streamable.com/COLE_O_LINK_AQUI' },
   'savannah': { name: 'Savannah', price: 30, videoUrl: 'https://streamable.com/COLE_O_LINK_AQUI' },
   'abbi': { name: 'Abbi', price: 22, videoUrl: 'https://files.fm/f/vg9sk8v6nc' },
-  'ivanka_and_bro': { name: 'Ivanka and Bro', price: 32, videoUrl: 'https://files.fm/f/vg9sk8v6nc' },
+  'ivanka_and_bro': { name: 'Ivanka and Bro', price: 32, videoUrl: 'https://files.fm/u/4cc5vnrupu' },
+  'mom_and_son': { name: 'Mom and Son', price: 30, videoUrl: 'https://files.fm/f/jyvd7thq36' },
+  'omegle': { name: 'Omegle', price: 40, videoUrl: 'https://files.fm/u/thmavn8r6j' },
+  'darkzaide': { name: 'Darkzaide', price: 40, videoUrl: 'https://files.fm/u/r6bedx78ty' },
   // adicione mais aqui...
 };
 
@@ -174,4 +177,5 @@ bot.on('message', (msg) => {
 });
 
 // express listen
+
 app.listen(PORT, () => console.log(`🌍 App escutando na porta ${PORT}`));
