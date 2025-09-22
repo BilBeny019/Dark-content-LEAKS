@@ -142,7 +142,7 @@ bot.on('callback_query', async (query) => {
     st.method = method;
     st.step = 'awaiting_confirmation';
     const prod = products[st.selected];
-    let reply = `🧾 *Resumo do pedido*\n\n• Produto: *${prod.name}*\n• Preço: *${formatPrice(prod.price)}*\n• Método: *${method.toUpperCase()}*\n\n`;
+    let reply = `🧾 *Order summary*\n\n• Product: *${prod.name}*\n• Price: *${formatPrice(prod.price)}*\n• Method: *${method.toUpperCase()}*\n\n`;
 
     if (method === 'paypal') reply += '💳 PayPal\👉 [DM me for pay](https://t.me/SELLERBOSS010)\nThen type *confirm*';
     if (method === 'binance') reply += '🪙 Binance\n• 👉 [DM me for pay](https://t.me/SELLERBOSS010)\nThen type *confirm*';
@@ -182,6 +182,7 @@ bot.on('message', (msg) => {
 // express listen
 
 app.listen(PORT, () => console.log(`🌍 App escutando na porta ${PORT}`));
+
 
 
 
