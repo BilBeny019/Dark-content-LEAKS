@@ -144,10 +144,10 @@ bot.on('callback_query', async (query) => {
     const prod = products[st.selected];
     let reply = `🧾 *Order summary*\n\n• Product: *${prod.name}*\n• Price: *${formatPrice(prod.price)}*\n• Method: *${method.toUpperCase()}*\n\n`;
 
-    if (method === 'paypal') reply += '💳 PayPal\👉 [DM me for pay](https://t.me/SELLERBOSS010)\nThen type *confirm*';
-    if (method === 'binance') reply += '🪙 Binance\n• 👉 [DM me for pay](https://t.me/SELLERBOSS010)\nThen type *confirm*';
-    if (method === 'cashapp') reply += '💼 CashApp\n👉 [DM me for pay](https://t.me/SELLERBOSS010)\nThen type *confirm*';
-    if (method === 'giftcard') reply += '🎁 Gift Card\n👉 [DM me for pay](https://t.me/SELLERBOSS010)\nThen type *confirm*';
+    if (method === 'paypal') reply += '💳 PayPal\👉 [DM me for pay](https://t.me/DARKSELLER019)\nThen type *confirm*';
+    if (method === 'binance') reply += '🪙 Binance\n• 👉 [DM me for pay](https://t.me/DARKSELLER019)\nThen type *confirm*';
+    if (method === 'cashapp') reply += '💼 CashApp\n👉 [DM me for pay](https://t.me/DARKSELLER019)\nThen type *confirm*';
+    if (method === 'giftcard') reply += '🎁 Gift Card\n👉 [DM me for pay](https://t.me/DARKSELLER019)\nThen type *confirm*';
 
     await bot.sendMessage(chatId, reply, { parse_mode: 'Markdown', disable_web_page_preview: false });
     return bot.answerCallbackQuery(query.id);
@@ -182,6 +182,7 @@ bot.on('message', (msg) => {
 // express listen
 
 app.listen(PORT, () => console.log(`🌍 App escutando na porta ${PORT}`));
+
 
 
 
